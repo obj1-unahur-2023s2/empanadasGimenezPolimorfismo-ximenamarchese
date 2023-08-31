@@ -1,0 +1,45 @@
+import empleados.*
+
+describe "Testing de Galvan"{
+	
+	/*method initialize(){
+		galvan.cobrarSueldo()
+	}
+	*/
+	
+	
+	method irAlShopping(){
+		galvan.gastar(50000)
+		galvan.gastar(500000)
+	}
+	method estaSinDeuda() {
+		return galvan.totalDeuda() == 0
+	}
+	
+	test "Galvan arranca con deuda cero" {
+		assert.equals(0, galvan.totalDeuda())	
+    }
+    test "Galvan arranca con dinero cero" {
+    	assert.equals(0, galvan.totalDinero())
+    }
+    test "El sueldo de galvan es de 150000"{
+    	assert.equals(150000, galvan.sueldo())
+    }
+    test "Galvan se va de shopping y se patina el sueldo de dos años"{
+    	galvan.cobrarSueldo()
+    	self.irAlShopping()
+    	assert.equals(400000, galvan.totalDeuda())
+    }
+    test "Gasta 40mil, deuda debe ser 40mil"{
+    	galvan.gastar(40000)
+    	assert.equals(40000, galvan.totalDeuda())
+    }
+    test "Gasta 40mil, deuda 40mil, totalDinero debe ser cero"{
+    	galvan.gastar(40000)
+    	assert.equals(0, galvan.totalDinero())
+    }
+	test "Galvan no tiene deuda" {
+		assert.that(self.estaSinDeuda())
+	}  
+}
+
